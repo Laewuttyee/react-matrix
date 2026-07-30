@@ -1,0 +1,134 @@
+:root {
+  --bg-color: #faf5f5;
+  --text-color: #4a3e3d;
+  --card-bg: #ffffff;
+  --accent-color: #d8a48f;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+}
+
+.flower-app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.flower-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.flower-header h1 {
+  font-size: 2.5rem;
+  color: #c97a7e;
+  margin-bottom: 8px;
+}
+
+.flower-header p {
+  font-style: italic;
+  color: #8c7875;
+}
+
+.flower-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.flower-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.flower-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.flower-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(201, 122, 126, 0.15);
+}
+
+.flower-card.active {
+  border-color: #c97a7e;
+  background-color: #fff5f5;
+}
+
+.flower-emoji {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.flower-card h3 {
+  margin: 10px 0 5px 0;
+  font-size: 1.3rem;
+}
+
+.price {
+  color: #c97a7e;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.flower-details-modal {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.3s ease;
+  max-width: 500px;
+  margin: 20px auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #c97a7e;
+}
+
+.modal-content button {
+  background-color: #c97a7e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: background 0.2s;
+}
+
+.modal-content button:hover {
+  background-color: #b36367;
+}
+
+.flower-footer {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 0.9rem;
+  color: #a69290;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
