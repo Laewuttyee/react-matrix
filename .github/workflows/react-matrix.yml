@@ -13,18 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+<<<<<<< HEAD
        node-version: [18.20.8, 20.x, 22.x]
+=======
+       node-version: [20.x, 22.x]
+>>>>>>> 79b45bd23e26e719a013d264d9b39bca7df38f91
     steps:
      - name: 📥 1. Checkout Code
        uses: actions/checkout@v4
      - name: 🟢 2. Setup Node.js v${{ matrix.node-version }}
        uses: actions/setup-node@v4
        with:
-          node-version: ${{ matrix.node-version }}
-
+        node-version: ${{ matrix.node-version }}
      - name: 📦 3. Install Dependencies
        run: npm install
-
      - name: 🏗️ 4. Build React Application
        run: npm run build
        env:

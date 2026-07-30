@@ -59,7 +59,11 @@ function App() {
       </main>
 
       <footer className="flower-footer">
+<<<<<<< HEAD
         <p>Designed with lwya for Day 46 Matrix Build Test</p>
+=======
+        <p>Designed with lwya for Matrix Build Test</p>
+>>>>>>> 79b45bd23e26e719a013d264d9b39bca7df38f91
       </footer>
     </div>
   );
