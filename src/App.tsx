@@ -59,7 +59,7 @@ function App() {
       </main>
 
       <footer className="flower-footer">
-        <p>Designed with 💖 for Day 46 Matrix Build Test</p>
+        <p>Designed with lwya for Matrix Build Test</p>
       </footer>
     </div>
   );
