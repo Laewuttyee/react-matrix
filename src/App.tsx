@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="flower-app">
       <header className="flower-header">
-        <h1>🌸 The Blossom Boutique 🌸</h1>
+        <h1 style="font-family:cursive">🌸 The Blossom Boutique 🌸</h1>
         <p>Discover beautiful flowers and their hidden meanings</p>
       </header>
 
