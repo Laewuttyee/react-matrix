@@ -27,3 +27,8 @@ jobs:
        run: npm run build
        env:
          NODE_ENV: ${{ env.PROJECT_NODE_ENV }}
+     - name: 5.Set up Docker Build
+       uses: docker/setup-build-action@v3
+     - name: 6. Build Docker Image inside Pipeline
+       run: |
+         docker build -t flower-app:test .
