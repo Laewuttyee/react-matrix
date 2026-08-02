@@ -1,4 +1,4 @@
-name: "The Automated Container Delivery" Capstone Project
+name: The Automated Container Delivery Capstone Project
 on:
   pull_request:
     branches: [main]
