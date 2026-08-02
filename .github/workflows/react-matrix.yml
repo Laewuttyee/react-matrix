@@ -32,7 +32,7 @@ jobs:
   release-to-dockerhub:
     name: Build  & Push to Docker Hub
     runs-on: ubuntu-latest
-    needs: code-check-quality
+    needs: code-quality-check
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
      - name: 📥 Checkout Code
