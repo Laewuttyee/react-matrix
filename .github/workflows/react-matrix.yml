@@ -1,33 +1,43 @@
-name: Production Ready React Frontend CI/CD to  Docker Hub
+name: "The Automated Container Delivery" Capstone Project
 on:
-  push:
-    branches: [main]
   pull_request:
+    branches: [main]
+  push:
     branches: [main]
 env:
   PROJECT_NODE_ENV: production
   DOCKERHUB_REPO_NAME: laewuttyee/flower-boutique-app
 jobs:
-  frontend-matrix-build:
-    name: Build React (Node v${{matrix.node-version }})
+  code-quality-check:
+    name: 🧪 Lint & Build Check
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-       node-version: [20.x, 22.x]
     steps:
-     - name: 📥 1. Checkout Code
+     - name: 📥 Checkout Code
        uses: actions/checkout@v4
-     - name: 🟢 2. Setup Node.js v${{ matrix.node-version }}
+     - name: 🟢 Setup Node.js v20
        uses: actions/setup-node@v4
        with:
-        node-version: ${{ matrix.node-version }}
-     - name: 📦 3. Install Dependencies
+        node-version: 20
+        cache: 'npm'
+     - name: 📦 Install Dependencies
        run: npm install
-     - name: 🏗️ 4. Build React Application
+     - name: 🚨 Run Linter (Code Style Check)
+       run: npm run lint
+
+     - name: 🏗️  Test Production Build
        run: npm run build
        env:
+         CI: true
          NODE_ENV: ${{ env.PROJECT_NODE_ENV }}
-     - name: 🔑 5. Log in to Docker Hub
+  release-to-dockerhub:
+    name: Build  & Push to Docker Hub
+    runs-on: ubuntu-latest
+    needs: code-check-quality
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+     - name: 📥 Checkout Code
+       uses: actions/checkout@v4
+     - name: 🔑 Log in to Docker Hub
        uses: docker/login-action@v3
        with:
          username: ${{ secrets.DOCKERHUB_USERNAME }}
