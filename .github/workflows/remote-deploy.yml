@@ -1,28 +1,22 @@
-name: Remote Deployment via SSH Lab
+name: Remote Deployment via Self-Hosted Lab
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  ssh-deploy-test:
-    name: 🚀 Remote SSH Execution
-    runs-on: ubuntu-latest
+  local-deploy-test:
+    name: 🚀 Local Execution via Self-Hosted Runner
+    runs-on: self-hosted
 
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
 
-      - name: 🌐 Executing Remote SSH Commands
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          port: 22 # Default SSH Port
-          script: |
-            echo "Successfully connected via SSH! 🎉"
-            cd ~
-            mkdir -p remote-deployed-app
-            ls -ld remote-deployed-app
-            echo "Dynamic Folder Created Successfully at $(date)"
+      - name: 🏗️ Execute Command Locally
+        run: |
+          echo "Successfully running inside my own Ubuntu VM! 🎉"
+          cd ~
+          mkdir -p remote-deployed-app
+          ls -ld remote-deployed-app
+          echo "Dynamic Folder Created at $(date)"
