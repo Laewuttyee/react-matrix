@@ -1,22 +1,23 @@
-name: Remote Deployment via Self-Hosted Lab
+name: Containerized CD Pipeline
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  local-deploy-test:
-    name: 🚀 Local Execution via Self-Hosted Runner
+  deploy-container:
+    name: 🚀 Deploy Containerized App to VM
     runs-on: self-hosted
 
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
 
-      - name: 🏗️ Execute Command Locally
+      - name: 🐳 Pull Latest Image & Restart Container
         run: |
-          echo "Successfully running inside my own Ubuntu VM! 🎉"
-          cd ~
-          mkdir -p remote-deployed-app
-          ls -ld remote-deployed-app
-          echo "Dynamic Folder Created at $(date)"
+          echo " Starting Containerized Deployment..."
+          cd ~/react-matrix
+          docker compose pull
+          docker compose up -d --remove-orphans          
+          docker image prune -f
+          echo " Deployment Completed Successfully! 🎉"
